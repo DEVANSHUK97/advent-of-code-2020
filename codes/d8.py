@@ -6,7 +6,7 @@
 import re
 import pandas as pd
 import numpy as np
-f = open(r"C:\Users\dkhurm\Desktop\Om Saraswataye Namah\aoc\inputs\2020d8.txt", "r")
+f = open(r"inputs\2020d8.txt", "r")
 text = (f.read()).strip()
 lines = text.split('\n')
 acc = 0

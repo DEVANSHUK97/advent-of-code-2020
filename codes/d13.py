@@ -50,28 +50,5 @@ for i in range(len(M_i)):
 print(ans)
 print([ans%i for i in buses])
 
-###############
-#Without CRT
-###############
-# case = '67,7,59,61'.split(',')
-# # case = lines[1].split(',')
-# dic = {}
-# ref = -1
-# for i in case:
-#     if i != 'x':
-#         dic[i] = case.index(str(i))
-#         if dic[i] == 0:
-#             ref = int(i)
-
-# ans = 0
-# inc = 1
-
-# for bus in case:
-#     if bus == 'x':
-#         continue
-#     target = dic[bus]%int(bus)
-#     while(ans%int(bus) != target):
-#         ans = ans + inc
-#     inc = inc*int(bus)
-      
-# print([ans%int(b) for b in case if b!='x'])  
+############
+# TODO: With Sieve

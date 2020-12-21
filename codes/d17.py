@@ -6,7 +6,7 @@ import os
 import time
 
 os.getcwd()
-f = open(r"C:\Users\dkhurm\Desktop\Om Saraswataye Namah\advent-of-code-2020\inputs\2020d17.txt", "r")
+f = open(r".\inputs\2020d17.txt", "r")
 lines = (f.read()).strip().split('\n')
 idim = len(lines[0])
 times = 6

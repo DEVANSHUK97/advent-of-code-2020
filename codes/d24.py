@@ -2,7 +2,7 @@ import re
 import pandas as pd
 import numpy as np
 import collections
-f = open(r"\2020d25.txt", "r")
+f = open(r"2020d25.txt", "r")
 text = (f.read()).strip()
 lines = text.split('\n')
 move_dict = {'e':(2,0), 'se':(1,-1), 'sw':(-1,-1), 'nw':(-1,1), 'ne':(1,1), 'w':(-2,0)}
@@ -46,24 +46,20 @@ print(ans)
 ########################################################################################
 days = 100
 for day in range(days):
-    for move in move_dict.values():
-        delta_x = move[0]
-        delta_y = move[1]
-        nbr = (x + delta_x, y + delta_y)
-        if nbr not in all_moves.keys():
-            all_moves[nbr] = 'White'
-
-    deck = collections.deque()
+    new_all_moves = all_moves.copy()
     for k in all_moves.keys():
-        deck.append(k)
+        x = k[0]
+        y = k[1]
+        for move in move_dict.values():
+            delta_x = move[0]
+            delta_y = move[1]
+            nbr = (x + delta_x, y + delta_y)
+            if nbr not in all_moves.keys():
+                new_all_moves[nbr] = 'White'
+    all_moves = new_all_moves.copy()
     new_floor = {}
-    seen = {}
-    while len(deck):
-        curr = deck.popleft()
-        # print(deck, curr)
-        if seen.get(curr, False):
-            continue
-        print(curr)
+    for curr in all_moves.keys():
+        # print(curr)
         x = curr[0]
         y = curr[1]
         black_count = 0
@@ -71,12 +67,10 @@ for day in range(days):
             delta_x = move[0]
             delta_y = move[1]
             nbr = (x + delta_x, y + delta_y)
-            if nbr not in deck:
-                # deck.append(nbr)
-                all_moves[nbr] = 'White'
-            else:
-                if all_moves[nbr] == 'Black':
-                    black_count = black_count + 1
+            if all_moves.get(nbr,False) == False:
+                continue
+            if all_moves[nbr] == 'Black':
+                black_count = black_count + 1
 
         if all_moves[curr] == 'Black' and (black_count == 0 or black_count > 2):
             new_floor[curr] = 'White'
@@ -86,7 +80,6 @@ for day in range(days):
             ans += 1
         else:
             new_floor[curr] = all_moves[curr]
-        seen[curr] = 1
 
     all_moves = new_floor.copy()
 

@@ -4,7 +4,7 @@ import numpy as np
 import collections
 import os
 os.getcwd()
-f = open(r"C:2020d11.txt", "r")
+f = open(r"./inputs/2020d11.txt", "r")
 text = (f.read()).strip()
 lines = list(text.split('\n'))
 x = []

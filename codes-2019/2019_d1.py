@@ -4,7 +4,7 @@ import numpy as np
 import collections
 import os
 os.getcwd()
-f = open(r'C:\Users\dkhurm\Desktop\Om Saraswataye Namah\advent-of-code\inputs\2019d1.txt', "r")
+f = open(r'2019d1.txt', "r")
 text = (f.read()).strip()
 lines = list(map(int,text.split('\n')))
 ans1 = 0
